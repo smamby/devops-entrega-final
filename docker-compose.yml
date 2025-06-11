@@ -1,0 +1,67 @@
+services:
+  app:
+    build: .
+    ports: 
+      - "8000:8000"
+    environment:
+      - DB_HOST=mysql_db
+      - DB_USER=todouser
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=lista_tareas_db
+      - NODE_ENV=development
+    depends_on:
+      mysql_db:
+        condition: service_healthy
+    networks:
+      - app_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/tareas"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    
+  mysql_db:
+    image: mysql:8.0
+    environment:
+      DB_HOST: "mysql_db"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: "lista_tareas_db"
+      MYSQL_USER: "todouser"
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    networks:
+      - app_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "$${MYSQL_USER}", "-p$${MYSQL_PASSWORD}"]
+      interval: 10s
+      timeout: 20s
+      retries: 10
+      start_period: 30s
+
+  tests:
+    build: .
+    environment:
+      - DB_HOST=mysql_db
+      - DB_USER=todouser
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=lista_tareas_db
+      - NODE_ENV=test
+    depends_on:
+      mysql_db:
+        condition: service_healthy
+      app:
+        condition: service_healthy
+    networks:
+      - app_network
+    command: sh -c "npm test -- --testPathPattern=__tests__/tareas.test.js && npm test -- --testPathPattern=__tests__/integration/tareas.integration.test.js && exit"
+    restart: "no"
+
+volumes:
+  mysql_data:
+
+networks:
+  app_network:
+    driver: bridge
