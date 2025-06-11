@@ -110,7 +110,7 @@ jobs:
     environment: production # Puedes definir un entorno para este paso en GitHub (opcional)
 
     steps:
-      - name: Trigger Render Deploy # Dispara un despliegue en Render
+      - name: Trigger Render Deploy # Dispara un despliegue en Render automaticamente
         # Render generalmente se configura para desplegar automáticamente en un push a 'main'.
         # Si tienes esa configuración en Render, este paso es solo informativo o puedes omitirlo.
         # Si quieres forzar un despliegue o tienes un flujo más complejo, puedes usar la Render CLI.
