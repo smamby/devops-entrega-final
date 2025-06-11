@@ -1,0 +1,23 @@
+{
+  "name": "lista-tareas-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest --detectOpenHandles --forceExit --testPathPattern=__tests__/tareas.test.js",
+    "test:integration": "jest --detectOpenHandles --forceExit --testPathPattern=integration"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.1.1"
+  }
+}
