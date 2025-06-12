@@ -117,6 +117,7 @@ jobs:
         # Para el despliegue automático de Render por push, este paso es un placeholder.
         run: |
           echo "Render está configurado para auto-desplegarse en la rama 'main'."
+          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
           echo "Verifica el estado del despliegue en tu panel de Render."
           # Si necesitas una acción más explícita (ej. si Render no auto-despliega solo por push):
           # - name: Deploy to Render via Render CLI
@@ -130,3 +131,5 @@ jobs:
 
           # https://listatareas-d7fh.onrender.com/
           # database: skysqlname: CI/CD Pipeline
+
+
