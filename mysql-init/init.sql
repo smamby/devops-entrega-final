@@ -12,5 +12,3 @@ CREATE TABLE IF NOT EXISTS tareas (
 INSERT INTO tareas (descripcion) VALUES ('Comprar pan');
 INSERT INTO tareas (descripcion, completada) VALUES ('Hacer ejercicio', TRUE);
 
-GRANT ALL PRIVILEGES ON lista_tareas_db.* TO 'todouser'@'%';
-FLUSH PRIVILEGES;
