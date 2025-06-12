@@ -2,14 +2,14 @@
 show databases;
 
 --# solo uso de despliegue automatico ci-cd
---# create database listatareas;
---# use listatareas;  
+# create database listatareas;
+# use listatareas;  
 
-create database if not exists lista_tareas_db;
+--create database if not exists lista_tareas_db;
 
 -- Selecciona la base de datos.
 -- Asegúrate de que 'lista_tareas_db' coincida con el nombre de la base de datos en tu docker-compose.yml
-USE lista_tareas_db;
+--USE lista_tareas_db;
 
 -- Crea la tabla 'tareas' si no existe
 CREATE TABLE IF NOT EXISTS tareas (
