@@ -1,17 +1,7 @@
--- Este script se ejecuta cuando el contenedor MySQL se inicia por primera vez.
-show databases;
-
---# solo uso de despliegue automatico ci-cd
---# create database listatareas;
---# use listatareas;  
-
 create database if not exists lista_tareas_db;
 
--- Selecciona la base de datos.
--- Asegúrate de que 'lista_tareas_db' coincida con el nombre de la base de datos en tu docker-compose.yml
 USE lista_tareas_db;
 
--- Crea la tabla 'tareas' si no existe
 CREATE TABLE IF NOT EXISTS tareas (
     id INT AUTO_INCREMENT PRIMARY KEY,
     descripcion VARCHAR(255) NOT NULL,
@@ -19,6 +9,8 @@ CREATE TABLE IF NOT EXISTS tareas (
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Opcional: Puedes añadir algunas tareas de ejemplo si quieres que aparezcan al iniciar la DB.
 INSERT INTO tareas (descripcion) VALUES ('Comprar pan');
 INSERT INTO tareas (descripcion, completada) VALUES ('Hacer ejercicio', TRUE);
+
+GRANT ALL PRIVILEGES ON lista_tareas_db.* TO 'todouser'@'%';
+FLUSH PRIVILEGES;
