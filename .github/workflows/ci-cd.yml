@@ -66,7 +66,7 @@ jobs:
         run: |
           echo "Skipping test DB migrations. If you have any, add your command here."
           # Ejemplo: npm run migrate:test
-          # Ejemplo: mysql -h 127.0.0.1 -u root -p${{ secrets.MYSQL_ROOT_PASSWORD_TEST }} ${{ secrets.MYSQL_DATABASE_TEST }} < path/to/schema.sql
+          mysql -h 127.0.0.1 -u root -p${{ secrets.MYSQL_ROOT_PASSWORD_TEST }} ${{ secrets.MYSQL_DATABASE_TEST }} < mysql-init/init.sql
 
       - name: Run integration tests # Ejecuta los tests de integración
         env:
