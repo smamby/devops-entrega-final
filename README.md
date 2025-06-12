@@ -11,3 +11,5 @@ docker-compose up -d --build
 winpty docker exec -it listatareas-app-1 bash  
 npm run test  
 npm run test:integration  
+
+#-
