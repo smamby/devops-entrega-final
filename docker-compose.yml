@@ -5,9 +5,9 @@ services:
       - "8000:8000"
     environment:
       - DB_HOST=mysql_db
-      - DB_USER=todouser
+      - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=lista_tareas_db
+      - DB_NAME=${DB_NAME}
       - NODE_ENV=development
     depends_on:
       mysql_db:
@@ -26,8 +26,8 @@ services:
     environment:
       DB_HOST: "mysql_db"
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: "lista_tareas_db"
-      MYSQL_USER: "todouser"
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql
@@ -45,9 +45,9 @@ services:
     build: .
     environment:
       - DB_HOST=mysql_db
-      - DB_USER=todouser
+      - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=lista_tareas_db
+      - DB_NAME=${DB_NAME}
       - NODE_ENV=test
     depends_on:
       mysql_db:
