@@ -8,6 +8,6 @@ docker-compose up --build
 
 #### Si se detachan (-d), los test se ejecutaran en segundo plano, y no se veran sus logs, habra que correrlos manualmente.
 docker-compose up -d --build  
-winpty docker exec -it listatareas-app-1 bash  
+winpty docker exec -it devops-entrega-final-app-1 bash  
 npm run test  
 npm run test:integration  
