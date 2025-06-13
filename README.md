@@ -1,7 +1,7 @@
 # Entrega final de devOps
 
 ## Despliegue con docker compose
-#### git clone https://github.com/smamby/listaTareas.git
+#### git clone https://github.com/smamby/devops-entrega-final
 #### copy .env al / del proyecto  
 #### Si no se detacha los contenedores, se podra ver los logs de los test, pero se debera matar el proceso manualmente al finalizar los mismos.
 docker-compose up --build  
