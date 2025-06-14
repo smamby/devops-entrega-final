@@ -49,16 +49,9 @@ cd devops-entrega-final
 
 ### 2. Configurar Variables de Entorno
 
-Crea un archivo `.env` en la raíz del proyecto con las variables de entorno necesarias para la base de datos:
+Crea un archivo `.env` en la raíz del proyecto con las variables de entorno necesarias para la base de datos (cuyo contenido se encuentra en la documentación entregada)
 
-```env
-DB_PASSWORD=todopassword
-MYSQL_ROOT_PASSWORD=rootpassword
-DB_HOST=mysql_db
-DB_USER=todouser
-DB_PORT=3306
-DB_NAME=lista_tareas_db
-```
+
 
 ### 3. Ejecutar la Aplicación
 
